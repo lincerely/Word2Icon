@@ -26,8 +26,17 @@ var Word2Icon = (function () {
     }
 
     function search() {
-        var word = searchInput.value;
+        var word = searchInput.value.toLowerCase();
+
+        if (word.length === 0){
+            searchInput.classList.remove('valid')
+            searchInput.classList.remove('invalid')
+            $s('#response').innerHTML = '';
+            return;
+        }
+
         var simWords = Word2VecUtils.getSortListSim(NUM_TO_SHOW, word, iconWordList);
+        
         if (simWords[0] === false) {
             searchInput.classList.add('invalid')
             searchInput.classList.remove('valid')
