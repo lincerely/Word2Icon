@@ -70,11 +70,40 @@ var Word2VecUtils = (function() {
     );
   }
 
-  function getNClosestMatches(n, vec) {
+  //compare word to list of words, return N closest matches
+  function getSortListSim(n, word, wordList) {
+    if(!wordVecs.hasOwnProperty(word)){
+      return [false, word];
+    }
+
+    //remove duplicate
+    wordList = Array.from(new Set(wordList))
+
+    let vecList = []
+    let okList = [];
+    for (var i in wordList){
+      if(wordVecs.hasOwnProperty(wordList[i])){
+        vecList.push(wordVecs[wordList[i]])
+        okList.push(wordList[i])
+      }
+    }
+
+    let notOk = wordList.length - okList.length
+    console.log("OK:" + okList.length + " Not OK:" + notOk + " Total:" + wordList.length);
+    
+    return getNClosestMatches(n, wordVecs[word], vecList, okList )
+  }
+
+  function getNClosestMatches(n, vec, vecList = wordVecs, wordList ) {
     var sims = [];
-    for (var word in wordVecs) {
-      var sim = getCosSim(vec, wordVecs[word]);
-      sims.push([word, sim]);
+    for (var word in vecList) {
+      var sim = getCosSim(vec, vecList[word]);
+
+      if(wordList){
+        sims.push([wordList[word], sim]);
+      }else{
+        sims.push([word, sim]);
+      }
     }
     sims.sort(function(a, b) {
       return b[1] - a[1]; 
@@ -123,6 +152,7 @@ var Word2VecUtils = (function() {
     addVecs: addVecs,
     subVecs: subVecs,
     getNClosestMatches: getNClosestMatches,
-    getCosSim: getCosSim
+    getCosSim: getCosSim,
+    getSortListSim: getSortListSim,
   };
 })();

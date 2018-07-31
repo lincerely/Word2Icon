@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Word to Vec JS Demo</title>
-    <script src="data/wordvecs10000.js"></script>
-    <script src="assets/js/word2vecutils.js"></script>
-    <script src="assets/js/word2vecdemo.js"></script>
-  </head>
-  <body>
-    <h2>Word to Vec JS Demo</h2>
-    
-    <h3>Similar Words</h3>
-    <p>Enter a word and see words with similar vectors.</p>
-    <input placeholder="Target word"
-           type="text" id="target-word">
-    <input type="button" value="List words" id="list-sim-btn">
+
+<head>
+  <meta charset="utf-8">
+  <title>Word2Icon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <!-- Custom styles from template -->
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+
+  <script src="data/wordvecs25000.js"></script>
+  <script src="assets/js/word2vecutils.js"></script>
+</head>
+
+<body>
+
+  <!-- Begin page content -->
+  <main role="main" class="container">
+    <h1 class="mt-5">Word2Icon</h1>
+    <p class="lead">Advance search for <a href="https://material.io/tools/icons/?style=baseline">material icons</a>.</p>
+    <p>Enter a word and see icons with similar vectors.</p>
+
+    <div class="input-group">
+        <input id="search-input" type="text" class="form-control" placeholder="Search" aria-label="Search content" aria-describedby="list-sim-btn">
+        <div class="input-group-append">
+          <span class="input-group-text" id="list-sim-btn"><i class="material-icons">search</i></span>
+        </div>
+    </div>
+    <div>
+        <p class="small" id="response"></p>
+    </div>
     <br>
-    <table id="sim-table"></table>
+    <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">Icon</th>
+              <th scope="col">Name</th>
+              <th scope="col">Keyword</th>
+              <th scope="col">Similarity</th>
+          </tr>
+      </thead>
+      <tbody id="sim-table">
+      </tbody>
+    </table>
+  </main>
 
-    <h3>Word Algebra</h3>
-    <p>Enter all three words, the first two, or the last two and see the words that result.</p>
-    <input placeholder="Word 1" type="text" id="word-1"> + 
-    (<input placeholder="Word 2" type="text" id="word-2"> -
-    <input placeholder="Word 3" type="text" id="word-3">) =
-    <input type="button" value="Get result" id="solve-eqn-btn">
-    <table id="eqn-table"></table>
 
-    <hr>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Lincerely</span>
+    </div>
+  </footer>
 
-    <a href="https://github.com/turbomaze/word2vecjson">Fork me</a> &copy; <a href="http://anthony.ai">Anthony Liu</a> 2016
-  </body>
+  <!-- Main logic -->
+  <script src="assets/js/word2icon.js"></script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>

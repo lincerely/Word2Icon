@@ -1,12 +1,22 @@
-Word2Vec JSON
-==================
+# Word2Icon
 
-[Word2vec](https://code.google.com/p/word2vec/) represents words as vectors whose components encompass what the words mean. Algebraic operations on those vectors, like "king" - "man" + "woman", yield intuitively correct results, like "queen". This project provides the word vectors for the 1000, 5000, 10000, and 25000 most common English words in JSON.
+> Search material design icon with related words
 
-Demo at http://turbomaze.github.io/word2vecjson/.
+![screenshot](assets/img/word2icon.png)
 
-## Usage
-To use these vectors in a project, include the `data/wordvecs10000.js` file and you're set. It's a JS object whose keys are words and values are word vectors (arrays of doubles). Included in this project is a script (`assets/js/word2vecutils.js`) with some common utility functions for playing around with word vectors.
+## Why 
 
-## License
-MIT License: http://igliu.mit-license.org/
+When searching for Material icon in https://material.io/tools/icons/, I always need to guess the name of the icon or skim through whole list of icons to find a suitable one.
+
+Therefore, Word2Icon is created so that I can search icons with related keywords.
+
+This is done by sorting icon using the similarities between the query and icon descriptions. While similarities are caluclated from trained vector from Word2Vec.
+
+## Acknowledgement
+
+This app is build on top of [turbomaze](https://github.com/turbomaze)'s [word2vecjson](https://github.com/turbomaze/word2vecjson).
+
+
+## External links
+
+ - Source of icon names used: https://raw.githubusercontent.com/google/material-design-icons/master/iconfont/codepoints
